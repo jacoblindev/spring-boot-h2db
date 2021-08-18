@@ -38,7 +38,7 @@ public class MemberController {
         persistentMember.setMobile(member.getMobile());
         persistentMember.setEmail(member.getEmail());
         memberService.saveOrUpdate(persistentMember);
-        return member.getId();
+        return persistentMember.getId();
     }
 
     @DeleteMapping(value = "/member/{id}")
