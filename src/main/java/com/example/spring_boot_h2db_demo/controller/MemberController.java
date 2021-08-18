@@ -3,6 +3,7 @@ package com.example.spring_boot_h2db_demo.controller;
 import java.util.List;
 
 import com.example.spring_boot_h2db_demo.model.Member;
+import com.example.spring_boot_h2db_demo.model.MemberDTO;
 import com.example.spring_boot_h2db_demo.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,13 @@ public class MemberController {
     }
 
     @PostMapping(value = "/member")
-    public int saveMember(@RequestBody Member member) {
-        memberService.saveOrUpdate(member);
+    public int saveMember(@RequestBody MemberDTO member) {
+        Member persistentMember = new Member();
+        persistentMember.setId(member.getId());
+        persistentMember.setName(member.getName());
+        persistentMember.setMobile(member.getMobile());
+        persistentMember.setEmail(member.getEmail());
+        memberService.saveOrUpdate(persistentMember);
         return member.getId();
     }
 

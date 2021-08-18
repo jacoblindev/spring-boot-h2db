@@ -15,7 +15,7 @@ public class MemberService {
     MemberRepository memberRepository;
 
     public List<Member> getAllMember() {
-        List<Member> members = new ArrayList<Member>();
+        List<Member> members = new ArrayList<>();
         memberRepository.findAll().forEach(member -> members.add(member));
         return members;
     }
